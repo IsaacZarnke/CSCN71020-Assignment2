@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "CppUnitTest.h"
 
-extern "C" int getPerimeter(int, int);
-extern "C" int getArea(int, int);
+extern "C" int getPerimeter(int* length, int* width);
+extern "C" int getArea(int* length, int* width);
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -11,7 +11,7 @@ namespace TestingPerimeterAndArea
 	TEST_CLASS(TestingPerimeterAndArea)
 	{
 	public:
-		
+
 		/*TEST_METHOD(TestMethod1)
 		{
 		}*/
@@ -20,7 +20,11 @@ namespace TestingPerimeterAndArea
 		{
 			//This is testing the getPerimeter function using 2 * 2 + 4 * 2 = 12
 			int result = 0;
-			result = getPerimeter(2, 4);
+
+			int x = 2;
+			int y = 4;
+
+			result = getPerimeter(&x, &y);
 			Assert::AreEqual(12, result);
 		}
 
@@ -28,7 +32,10 @@ namespace TestingPerimeterAndArea
 		{
 			// This is testing the getArea function using 4 * 4 = 16
 			int result = 0;
-			result = getArea(4, 4);
+
+			int x = 4;
+
+			result = getArea(&x, &x);
 			Assert::AreEqual(16, result);
 		}
 	};
